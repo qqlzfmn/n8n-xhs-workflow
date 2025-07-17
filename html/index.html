@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>n8n chat</title>
+    <!-- n8n Chat Support Widget -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'http://localhost:5678/webhook/643fb1fd-e88e-4a7c-9c14-efd32cef3436/chat',
+            mode: 'fullscreen',
+            defaultLanguage: 'zh',
+            initialMessages: [
+                '你好！ 👋',
+                '我是你的全能助手，有什么我可以帮你的吗？'
+            ],
+            i18n: {
+                en: {
+                    title: 'Hi there! 👋',
+                    subtitle: "Start a chat. We're here to help you.",
+                    footer: '',
+                    getStarted: 'New Conversation',
+                    inputPlaceholder: 'Type your question..',
+                },
+                zh: {
+                    title: '你好！ 👋',
+                    subtitle: '问我一些有意思的问题吧。',
+                    footer: '',
+                    getStarted: '新对话',
+                    inputPlaceholder: '请输入你的问题...',
+                },
+            },
+        });
+    </script>
+    <style>
+        html,
+        body,
+        #n8n-chat {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
