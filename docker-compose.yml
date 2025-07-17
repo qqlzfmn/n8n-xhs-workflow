@@ -56,7 +56,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.enable=true
     ports:
-      - 48080:80
+      - 8080:80
     restart: unless-stopped
 
   ## 如果需要使用watchtower自动更新镜像，请取消注释以下内容
