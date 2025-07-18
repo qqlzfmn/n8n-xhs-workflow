@@ -2,7 +2,6 @@ services:
 
   n8n:
     image: n8nio/n8n
-    container_name: n8n
     volumes:
       - ./n8n-data/data:/home/node/.n8n
       - ./n8n-data/files:/files
@@ -13,12 +12,11 @@ services:
     labels:
       - com.centurylinklabs.watchtower.enable=true
     ports:
-      - 5678:5678
+      - 45678:5678
     restart: unless-stopped
 
   selenium:
     image: selenium/standalone-chromium
-    container_name: selenium
     volumes:
       - ./chrome-data:/home/seluser
     environment:
@@ -36,9 +34,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: xhs-toolkit
     volumes:
       - ./xhs-toolkit.env:/app/.env
+      - ./xhs-toolkit-data:/app/data
     environment:
       - TZ=Asia/Shanghai
     ports:
@@ -47,7 +45,6 @@ services:
 
   web:
     image: nginx:alpine
-    container_name: agent-web
     volumes:
       - ./html:/usr/share/nginx/html
       - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
@@ -56,13 +53,12 @@ services:
     labels:
       - com.centurylinklabs.watchtower.enable=true
     ports:
-      - 8080:80
+      - 48080:80
     restart: unless-stopped
 
   ## 如果需要使用watchtower自动更新镜像，请取消注释以下内容
   # watchtower:
   #   image: containrrr/watchtower
-  #   container_name: watchtower
   #   volumes:
   #     - /var/run/docker.sock:/var/run/docker.sock
   #   environment:

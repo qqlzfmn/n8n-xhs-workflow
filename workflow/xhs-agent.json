@@ -67,7 +67,7 @@
     },
     {
       "parameters": {
-        "sseEndpoint": "http://host.docker.internal:48000/sse"
+        "sseEndpoint": "http://xhs-toolkit:8000/sse"
       },
       "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
       "typeVersion": 1,

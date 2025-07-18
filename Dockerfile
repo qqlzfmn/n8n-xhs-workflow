@@ -13,10 +13,7 @@ RUN apk add --no-cache chromium-chromedriver
 COPY --from=builder xhs-toolkit /app
 
 WORKDIR /app
-COPY xhs-toolkit.env .env
 RUN uv sync
-
-EXPOSE 58000
 
 ENTRYPOINT [ "uv", "run", "xhs_toolkit.py" ]
 CMD [ "server", "start" ]
