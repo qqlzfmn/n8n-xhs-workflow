@@ -2,81 +2,59 @@
   "nodes": [
     {
       "parameters": {
+        "needsFallback": true,
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.1,
       "position": [
-        416,
+        256,
         0
       ],
-      "id": "4799c282-6285-4b67-9649-bd6f3738018c",
+      "id": "d8803b5d-5870-41c6-9f29-c4ba2b18e59c",
       "name": "AI Agent"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "Qwen/Qwen2.5-7B-Instruct",
-          "mode": "list",
-          "cachedResultName": "Qwen/Qwen2.5-7B-Instruct"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        288,
-        208
-      ],
-      "id": "0e1ff46c-442b-4b85-a94c-1576b5f7d030",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "NAGBkWwsUn93IGvQ",
-          "name": "OpenAi account"
-        }
-      }
     },
     {
       "parameters": {},
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        432,
+        272,
         208
       ],
-      "id": "e8ca8888-1c08-4a78-9cd1-00d4264f6190",
+      "id": "5cc21c47-c725-4dd7-8fdb-c509763373b9",
       "name": "Simple Memory"
     },
     {
       "parameters": {
         "public": true,
+        "authentication": "n8nUserAuth",
         "initialMessages": "你好，我是你的全能助手，有什么我可以帮你的吗？",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        160,
+        0,
         0
       ],
-      "id": "3ebfc8cf-ac68-4307-b24e-4bda3d4aedb8",
+      "id": "7fbc1ca9-1f99-4ccf-86ec-6ec30d576bed",
       "name": "When chat message received",
       "webhookId": "643fb1fd-e88e-4a7c-9c14-efd32cef3436"
     },
     {
       "parameters": {
-        "sseEndpoint": "http://xhs-toolkit:8000/sse"
+        "endpointUrl": "http://xiaohongshu-mcp:18060/mcp",
+        "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
-      "typeVersion": 1,
+      "typeVersion": 1.2,
       "position": [
-        576,
+        400,
         208
       ],
-      "id": "5fded7a3-3522-46c2-a73a-a82fa8fa0e79",
-      "name": "MCP Client"
+      "id": "e742001e-4594-489a-899f-5bc1396711de",
+      "name": "XiaoHongShu"
     },
     {
       "parameters": {
@@ -110,15 +88,15 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.2,
       "position": [
-        720,
+        528,
         208
       ],
-      "id": "20739431-df90-4631-8ee5-5e58d11e9e29",
-      "name": "HTTP Request",
+      "id": "f5c6dbf9-1e64-4e1c-ad63-c62e86295408",
+      "name": "Image Generator",
       "credentials": {
         "httpBearerAuth": {
-          "id": "kx2LONUC0OQp7VWd",
-          "name": "Bearer Auth account"
+          "id": "QORCUWDdcY8HGJfS",
+          "name": "DMXAPI account"
         }
       }
     },
@@ -129,29 +107,73 @@
       "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
       "typeVersion": 1,
       "position": [
-        864,
+        656,
         208
       ],
-      "id": "4c6f5fc3-7741-48f0-8f44-39c6b8241098",
-      "name": "SerpAPI",
+      "id": "241d3c06-f308-40af-bae3-698600b813df",
+      "name": "Search Tool",
       "credentials": {
         "serpApi": {
-          "id": "CGm2jw98Nd5y0eIN",
+          "id": "8v44euaBHjqMEtDb",
           "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-flash",
+          "mode": "list",
+          "cachedResultName": "gemini-2.5-flash"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        144,
+        208
+      ],
+      "id": "73ad3d4b-34f6-4866-8026-9a27ca9aa098",
+      "name": "Gemini-2.5-Flash",
+      "credentials": {
+        "openAiApi": {
+          "id": "LfhmGmORAyNJYz2r",
+          "name": "DMXAPI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-pro",
+          "mode": "list",
+          "cachedResultName": "gemini-2.5-pro"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        16,
+        208
+      ],
+      "id": "1dcc7c02-f517-48fa-977f-b58da4561b13",
+      "name": "Gemini-2.5-Pro",
+      "credentials": {
+        "openAiApi": {
+          "id": "LfhmGmORAyNJYz2r",
+          "name": "DMXAPI"
         }
       }
     }
   ],
   "connections": {
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
+    "AI Agent": {
+      "main": [
+        []
       ]
     },
     "Simple Memory": {
@@ -176,7 +198,7 @@
         ]
       ]
     },
-    "MCP Client": {
+    "XiaoHongShu": {
       "ai_tool": [
         [
           {
@@ -187,7 +209,7 @@
         ]
       ]
     },
-    "HTTP Request": {
+    "Image Generator": {
       "ai_tool": [
         [
           {
@@ -198,12 +220,34 @@
         ]
       ]
     },
-    "SerpAPI": {
+    "Search Tool": {
       "ai_tool": [
         [
           {
             "node": "AI Agent",
             "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini-2.5-Flash": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Gemini-2.5-Pro": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -213,6 +257,6 @@
   "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "9fd49ee57191e071dfdacb96415ddff1b56444a83d7bb0240489dedd86394fb6"
+    "instanceId": "de7aadee1f6e1bcdc05df0d5c7ddee7c28ab650ebf9b2fe74e74f5ffd066fbbc"
   }
 }

@@ -12,14 +12,14 @@
 8. Enjoy!
 
 ## Usage
-1. Chat with agent: `登录小红书`
-2. Check `http://localhost:44444`
-3. Scan the login QR code.
-4. Other usages: [💬 AI对话式操作指南](https://github.com/aki66938/xhs-toolkit?tab=readme-ov-file#-ai%E5%AF%B9%E8%AF%9D%E5%BC%8F%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97)
-
-## Known issues
-- "下载图片失败" from xhs-toolkit, to fix this, you can add a "Download Image" node.
+1. Start a mcp inspector with `bunx @modelcontextprotocol/inspector`
+2. Check `http://localhost:6274`
+3. Connect `http://localhost:48060/mcp` with `Streamable HTTP` `Via Proxy`
+4. Run `get_login_qrcode` tool and scan the qrcode
+5. Run `check_login_status` tool and check if `IsLoggedIn` is `True`
+6. After logged in, you can manage your xiaohongshu with chat ai
+7. Other usages: [项目简介](https://github.com/xpzouying/xiaohongshu-mcp/tree/main?tab=readme-ov-file#%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B)
 
 ## 🙏 Acknowledgments
-- This project was inspired by [xhs-toolkit](https://github.com/aki66938/xhs-toolkit).
+- This project was inspired by [xiaohongshu-mcp](https://github.com/xpzouying/xiaohongshu-mcp).
 - Special thanks to [n8n](https://github.com/n8n-io/n8n)

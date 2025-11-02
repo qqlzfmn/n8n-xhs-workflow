@@ -3,8 +3,8 @@ services:
   n8n:
     image: n8nio/n8n
     volumes:
-      - ./n8n-data/data:/home/node/.n8n
-      - ./n8n-data/files:/files
+      - ./data/n8n-data/data:/home/node/.n8n
+      - ./data/n8n-data/files:/files
     environment:
       - TZ=Asia/Shanghai
       - GENERIC_TIMEZONE=Asia/Shanghai
@@ -15,32 +15,20 @@ services:
       - 45678:5678
     restart: unless-stopped
 
-  selenium:
-    image: selenium/standalone-chromium
+  xiaohongshu-mcp:
+    image: xpzouying/xiaohongshu-mcp
+    tty: true
     volumes:
-      - ./chrome-data:/home/seluser
+      - ./data/xhs-mcp-data/data:/app/data
+      - ./data/xhs-mcp-data/images:/app/images
     environment:
-      - SE_VNC_NO_PASSWORD=1
       - TZ=Asia/Shanghai
+      - ROD_BROWSER_BIN=/usr/bin/google-chrome
+      - COOKIES_PATH=/app/data/cookies.json
     labels:
       - com.centurylinklabs.watchtower.enable=true
     ports:
-      - 44444:4444
-      - 47900:7900
-    shm_size: 2g
-    restart: unless-stopped
-
-  xhs-toolkit:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./xhs-toolkit.env:/app/.env
-      - ./xhs-toolkit-data:/app/data
-    environment:
-      - TZ=Asia/Shanghai
-    ports:
-      - 48000:8000
+      - "48060:18060"
     restart: unless-stopped
 
   web:
